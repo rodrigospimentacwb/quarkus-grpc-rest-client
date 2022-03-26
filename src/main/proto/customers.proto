@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "dev.pepper.grpc.customer";
+option java_outer_classname = "CustomersProto";
+
+package customers;
+
+service CustomersService {
+    rpc listAll (Multiplyer) returns (ListCustomers) {}
+    rpc getNameById (Customer) returns (CustomerName) {}
+}
+
+message Multiplyer {
+    int32 value = 1;
+}
+
+message ListCustomers {
+    repeated Customer customer = 1;
+}
+
+message CustomerName {
+    string customerName = 1;
+}
+
+message Customer {
+    int64 id = 1;
+    string name = 2;
+    string email = 3;
+    string phone = 4;
+    string address = 5;
+    string zipCode = 6;
+    string cpf = 7;
+}
